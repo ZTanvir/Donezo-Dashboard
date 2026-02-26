@@ -1,6 +1,19 @@
 const baseUrl = import.meta.env.VITE_API_ENDPOINT;
 
-export const login = async (url: string, { arg }) => {
+type LoginData = {
+  email: string;
+  password: string;
+};
+type LoginResponse = {
+  id: string;
+  email: string;
+  token: string;
+};
+
+export const login = async (
+  url: string,
+  { arg }: { arg: LoginData },
+): Promise<LoginResponse> => {
   const fullUrl = `${baseUrl}${url}`;
 
   const response = await fetch(fullUrl, {
