@@ -2,6 +2,7 @@ import { useState } from "react";
 import { MdOutlineEmail } from "react-icons/md";
 import { CiLock } from "react-icons/ci";
 import { FaRegEyeSlash, FaRegEye } from "react-icons/fa";
+import { ImSpinner8 } from "react-icons/im";
 import useSWRMutation from "swr/mutation";
 import { login } from "../services/api";
 
@@ -10,7 +11,6 @@ const LoginForm = () => {
   const [password, setPassword] = useState("");
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const { trigger, isMutating } = useSWRMutation("/api/login", login);
-  console.log(isMutating);
 
   const handleSubmitForm = async (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -75,10 +75,18 @@ const LoginForm = () => {
         </div>
       </div>
       <button
-        className="w-full rounded-2xl bg-green-900 py-3 font-bold text-white transition duration-150 hover:cursor-pointer hover:bg-green-800"
+        disabled={isMutating}
+        className="item-center flex w-full justify-center space-x-2 rounded-2xl bg-green-900 py-3 font-bold text-white transition duration-150 hover:cursor-pointer hover:bg-green-700 disabled:cursor-not-allowed disabled:bg-green-700"
         type="submit"
       >
-        Sign in
+        <span
+          className={`self-center opacity-0 ${isMutating && "opacity-100"}`}
+        >
+          <ImSpinner8 size={20} className="animate-spin" />
+          <span className="sr-only">Loading...</span>
+        </span>
+
+        <span> Sign in</span>
       </button>
     </form>
   );
