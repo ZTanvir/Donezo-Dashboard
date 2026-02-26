@@ -2,14 +2,26 @@ import { useState } from "react";
 import { MdOutlineEmail } from "react-icons/md";
 import { CiLock } from "react-icons/ci";
 import { FaRegEyeSlash, FaRegEye } from "react-icons/fa";
+import useSWRMutation from "swr/mutation";
+import { login } from "../services/api";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+  const { trigger, isMutating } = useSWRMutation("/api/login", login);
+  console.log(isMutating);
 
-  const handleSubmitForm = (e: React.SubmitEvent<HTMLFormElement>) => {
+  const handleSubmitForm = async (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
+    console.log(email, password);
+    const formData = { email, password };
+    try {
+      const response = await trigger(formData);
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
