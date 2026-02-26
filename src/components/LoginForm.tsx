@@ -46,19 +46,20 @@ const LoginForm = () => {
             onChange={(e) => setPassword(e.target.value)}
             placeholder="password123"
           />
-          {isPasswordVisible ? (
-            <FaRegEyeSlash
-              onClick={() => setIsPasswordVisible(false)}
-              size={20}
-              className="absolute top-1/2 right-3 -translate-y-1/2 text-gray-400 hover:cursor-pointer"
-            />
-          ) : (
-            <FaRegEye
-              onClick={() => setIsPasswordVisible(true)}
-              className="absolute top-1/2 right-3 -translate-y-1/2 text-gray-400 hover:cursor-pointer"
-              size={20}
-            />
-          )}
+          {password.length > 0 &&
+            (isPasswordVisible ? (
+              <FaRegEye
+                onClick={() => setIsPasswordVisible(false)}
+                className="absolute top-1/2 right-3 -translate-y-1/2 text-gray-400 hover:cursor-pointer"
+                size={20}
+              />
+            ) : (
+              <FaRegEyeSlash
+                onClick={() => setIsPasswordVisible(true)}
+                size={20}
+                className="absolute top-1/2 right-3 -translate-y-1/2 text-gray-400 hover:cursor-pointer"
+              />
+            ))}
         </div>
       </div>
       <button
