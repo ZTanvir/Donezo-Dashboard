@@ -10,22 +10,24 @@ const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
-  const { trigger, isMutating } = useSWRMutation("/api/login", login);
+  const { trigger, isMutating, error } = useSWRMutation("/api/login", login);
 
   const handleSubmitForm = async (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log(email, password);
     const formData = { email, password };
-    try {
-      const response = await trigger(formData);
-      console.log(response);
-    } catch (error) {
-      console.log(error);
-    }
+    const response = await trigger(formData);
+    console.log(response);
   };
 
   return (
     <form className="" onSubmit={handleSubmitForm}>
+      {error && (
+        <div className="my-4 rounded-lg bg-red-200 p-2 text-gray-800">
+          {error?.message}
+        </div>
+      )}
+
       <div className="mb-4 flex flex-col space-y-2">
         <label htmlFor="email">Email Address</label>
         <div className="relative">
@@ -35,11 +37,12 @@ const LoginForm = () => {
           />
           <input
             className="w-full rounded-xl border border-gray-300 py-2 pr-3 pl-10 text-gray-700 transition-all duration-150 focus:ring-gray-500"
-            type="text"
+            type="email"
             id="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="user1@example.com"
+            required={true}
           />
         </div>
       </div>
@@ -57,6 +60,7 @@ const LoginForm = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="password123"
+            required={true}
           />
           {password.length > 0 &&
             (isPasswordVisible ? (

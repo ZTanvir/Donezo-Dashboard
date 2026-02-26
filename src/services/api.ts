@@ -10,6 +10,6 @@ export const login = async (url: string, { arg }) => {
     },
     body: JSON.stringify(arg),
   });
-  if (!response.ok) throw new Error("Login failed");
+  if (!response.ok) throw new Error("Login failed, please try again.");
   return response.json();
 };
