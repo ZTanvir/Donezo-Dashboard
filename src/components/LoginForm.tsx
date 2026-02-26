@@ -1,14 +1,19 @@
 import { useState } from "react";
 import { MdOutlineEmail } from "react-icons/md";
 import { CiLock } from "react-icons/ci";
-import { FaRegEyeSlash } from "react-icons/fa";
+import { FaRegEyeSlash, FaRegEye } from "react-icons/fa";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+
+  const handleSubmitForm = (e: React.SubmitEvent<HTMLFormElement>) => {
+    e.preventDefault();
+  };
 
   return (
-    <form className="">
+    <form className="" onSubmit={handleSubmitForm}>
       <div className="mb-4 flex flex-col space-y-2">
         <label htmlFor="email">Email Address</label>
         <div className="relative">
@@ -35,16 +40,25 @@ const LoginForm = () => {
           />
           <input
             className="w-full rounded-xl border border-gray-300 px-10 py-2 text-gray-700 transition-all duration-150 focus:ring-gray-500"
-            type="password"
+            type={isPasswordVisible ? "text" : "password"}
             id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="password123"
           />
-          <FaRegEyeSlash
-            size={20}
-            className="absolute top-1/2 right-3 -translate-y-1/2 text-gray-400 hover:cursor-pointer"
-          />
+          {isPasswordVisible ? (
+            <FaRegEyeSlash
+              onClick={() => setIsPasswordVisible(false)}
+              size={20}
+              className="absolute top-1/2 right-3 -translate-y-1/2 text-gray-400 hover:cursor-pointer"
+            />
+          ) : (
+            <FaRegEye
+              onClick={() => setIsPasswordVisible(true)}
+              className="absolute top-1/2 right-3 -translate-y-1/2 text-gray-400 hover:cursor-pointer"
+              size={20}
+            />
+          )}
         </div>
       </div>
       <button
