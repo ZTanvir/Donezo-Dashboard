@@ -1,0 +1,22 @@
+name: React CI Pipeline
+
+on:
+  push:
+    branches: [main, denzoSpa]
+
+jobs:
+  build_and_test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: "22"
+      - name: Install dependencies
+        run: npm install
+      - name: Check style
+        run: npm run lint
+      - name: Check typescript types
+        run: npm run check-types
+      - name: Check build
+        run: npm run build
