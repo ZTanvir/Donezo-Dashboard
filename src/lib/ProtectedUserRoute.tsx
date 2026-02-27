@@ -3,6 +3,8 @@ import { useCurrentUser } from "../context/userContext/useUserContext";
 import LoginForm from "../components/LoginForm";
 import { Link } from "react-router";
 import { CiLock } from "react-icons/ci";
+import Navbar from "../components/Navbar";
+import Sidebar from "../components/Sidebar";
 
 const ProtectedUserRoute = () => {
   const { user } = useCurrentUser();
@@ -35,6 +37,20 @@ const ProtectedUserRoute = () => {
       </div>
     );
   }
-  return <Outlet />;
+  return (
+    <div>
+      <div className="grid h-screen grid-cols-[auto_1fr] grid-rows-[auto_1fr] gap-3">
+        <div className="col-start-1 row-span-full">
+          <Sidebar />
+        </div>
+        <div className="col-start-2">
+          <Navbar />
+        </div>
+        <div className="col-start-2">
+          <Outlet />
+        </div>
+      </div>
+    </div>
+  );
 };
 export default ProtectedUserRoute;
