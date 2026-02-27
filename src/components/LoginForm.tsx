@@ -5,19 +5,27 @@ import { FaRegEyeSlash, FaRegEye } from "react-icons/fa";
 import { ImSpinner8 } from "react-icons/im";
 import useSWRMutation from "swr/mutation";
 import { login } from "../services/api";
+import { useCurrentUser } from "../context/userContext/useUserContext";
+import { useNavigate } from "react-router";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const { trigger, isMutating, error } = useSWRMutation("/api/login", login);
+  const { setUser } = useCurrentUser();
+  const navigate = useNavigate();
 
   const handleSubmitForm = async (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(email, password);
     const formData = { email, password };
     const response = await trigger(formData);
-    console.log(response);
+    if (response) {
+      setUser(response);
+      setEmail("");
+      setPassword("");
+      navigate("/dashboard");
+    }
   };
 
   return (

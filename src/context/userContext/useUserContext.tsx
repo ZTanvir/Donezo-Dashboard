@@ -10,7 +10,7 @@ export const CurrentUserContext = createContext<CurrentUserContextType | null>(
   null,
 );
 
-export const useUser = () => {
+export const useCurrentUser = () => {
   const context = useContext(CurrentUserContext);
   if (!context) {
     throw new Error("useUser must be used within a UserProvider");
