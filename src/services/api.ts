@@ -1,13 +1,10 @@
+import type { LoginResponse } from "../types";
+
 const baseUrl = import.meta.env.VITE_API_ENDPOINT;
 
 type LoginData = {
   email: string;
   password: string;
-};
-type LoginResponse = {
-  id: string;
-  email: string;
-  token: string;
 };
 
 export const login = async (
