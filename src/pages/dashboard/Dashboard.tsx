@@ -1,10 +1,10 @@
 import { CgMathPlus } from "react-icons/cg";
 import { fetchDashboard } from "../../services/api";
 import useSWR from "swr";
+import OverviewCards from "./OverviewCard";
 
 const Dashboard = () => {
   const { data, isLoading, error } = useSWR("/api/dashboard", fetchDashboard);
-  console.log(data);
   return (
     <div className="p-4">
       <div className="flex flex-col items-start justify-between gap-4 md:flex-row">
@@ -25,11 +25,7 @@ const Dashboard = () => {
         </div>
       </div>
       <div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
+        <OverviewCards isLoading={isLoading} overviewData={data?.overview} />
         <div></div>
         <div></div>
         <div></div>

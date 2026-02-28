@@ -2,11 +2,11 @@ import { useState } from "react";
 import { MdOutlineEmail } from "react-icons/md";
 import { CiLock } from "react-icons/ci";
 import { FaRegEyeSlash, FaRegEye } from "react-icons/fa";
-import { ImSpinner8 } from "react-icons/im";
 import useSWRMutation from "swr/mutation";
 import { login } from "../services/api";
 import { useCurrentUser } from "../context/userContext/useUserContext";
 import { useNavigate } from "react-router";
+import Spinner from "./Spinner";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
@@ -94,7 +94,7 @@ const LoginForm = () => {
         <span
           className={`self-center opacity-0 ${isMutating && "opacity-100"}`}
         >
-          <ImSpinner8 size={20} className="animate-spin" />
+          <Spinner />
           <span className="sr-only">Loading...</span>
         </span>
 

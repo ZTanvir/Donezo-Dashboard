@@ -19,7 +19,7 @@ export type User = {
   joinDate: string;
 };
 
-export type Analytics = {
+export type Analytic = {
   date: Date;
   views: number;
   clicks: number;
@@ -37,6 +37,6 @@ export type Product = {
 export type Dashboard = {
   overview: Overview;
   users: User[];
-  analytics: Analytics[];
+  analytics: Analytic[];
   products: Product[];
 };
