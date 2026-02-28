@@ -8,7 +8,7 @@ import Sidebar from "../components/Sidebar";
 
 const ProtectedUserRoute = () => {
   const { user } = useCurrentUser();
-  if (!user) {
+  if (user) {
     return (
       <div className="h-screen bg-gray-400 backdrop-blur-xl">
         <div className="fixed inset-0 mx-2 my-auto h-max w-auto rounded-xl bg-white p-8 sm:m-auto sm:w-max">

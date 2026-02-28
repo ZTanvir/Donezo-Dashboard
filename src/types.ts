@@ -26,7 +26,7 @@ export type Analytics = {
   conversions: number;
 };
 
-export type Products = {
+export type Product = {
   id: number;
   name: string;
   price: number;
@@ -38,5 +38,5 @@ export type Dashboard = {
   overview: Overview;
   users: User[];
   analytics: Analytics[];
-  products: Products[];
+  products: Product[];
 };

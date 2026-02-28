@@ -1,7 +1,10 @@
 import { CgMathPlus } from "react-icons/cg";
+import { fetchDashboard } from "../../services/api";
+import useSWR from "swr";
 
 const Dashboard = () => {
-  const { data } = useSwr("");
+  const { data, isLoading, error } = useSWR("/api/dashboard", fetchDashboard);
+  console.log(data);
   return (
     <div className="p-4">
       <div className="flex flex-col items-start justify-between gap-4 md:flex-row">

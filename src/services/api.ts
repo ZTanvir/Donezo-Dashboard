@@ -1,4 +1,5 @@
 import type { LoginResponse } from "../types";
+import type { Dashboard } from "../types";
 
 const baseUrl = import.meta.env.VITE_API_ENDPOINT;
 
@@ -24,8 +25,10 @@ export const login = async (
   return response.json();
 };
 
-export const fetchDashboard = async (url: string) => {
-  const res = await fetch(url);
+export const fetchDashboard = async (url: string): Promise<Dashboard> => {
+  const fullUrl = `${baseUrl}${url}`;
+
+  const res = await fetch(fullUrl);
   if (!res.ok) {
     const error = new Error("An error occurred while fetching the data.");
     throw error;
