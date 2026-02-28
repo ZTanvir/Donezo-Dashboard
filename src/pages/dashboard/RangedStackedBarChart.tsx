@@ -1,4 +1,4 @@
-import { BarChart, XAxis, YAxis, Tooltip, Bar, BarStack } from "recharts";
+import { BarChart, XAxis, Tooltip, Bar, BarStack } from "recharts";
 
 import type { TooltipIndex } from "recharts";
 
