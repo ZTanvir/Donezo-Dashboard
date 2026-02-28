@@ -6,6 +6,7 @@ import OverviewCards from "./OverviewCard";
 import Card from "./Card";
 import Stopwatch from "./Stopwatch";
 import Products from "./Products";
+import Team from "./Team";
 
 const Dashboard = () => {
   const { data, isLoading, error } = useSWR("/api/dashboard", fetchDashboard);
@@ -45,6 +46,7 @@ const Dashboard = () => {
           </section>
         </Card>
         <Products isLoading={isLoading} productsData={data?.products} />
+        <Team isLoading={isLoading} teamsData={data?.users} />
         <div></div>
         <Stopwatch />
       </div>
