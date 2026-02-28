@@ -5,6 +5,7 @@ import useSWR from "swr";
 import OverviewCards from "./OverviewCard";
 import Card from "./Card";
 import Stopwatch from "./Stopwatch";
+import Products from "./Products";
 
 const Dashboard = () => {
   const { data, isLoading, error } = useSWR("/api/dashboard", fetchDashboard);
@@ -36,14 +37,14 @@ const Dashboard = () => {
             <p className="mb-1/2 text-3xl text-green-900">
               Meeting with Arc Company
             </p>
-            <p className="mb-2 text-gray-500">Time:02.00-04.00pm</p>
+            <p className="mb-2 text-gray-500">Time:02.00 - 04.00pm</p>
             <button className="flex items-center justify-center gap-2 rounded-3xl border bg-linear-to-r from-green-900 to-green-700 px-4 py-2 text-white hover:cursor-pointer">
               <FiVideo />
               <span>Add Project</span>
             </button>
           </section>
         </Card>
-        <div></div>
+        <Products isLoading={isLoading} productsData={data?.products} />
         <div></div>
         <Stopwatch />
       </div>
