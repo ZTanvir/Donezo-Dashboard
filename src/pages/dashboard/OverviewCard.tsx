@@ -1,5 +1,7 @@
 import Card from "./Card";
 import Spinner from "../../components/Spinner";
+import { IoIosArrowRoundUp } from "react-icons/io";
+import { MdArrowDropUp } from "react-icons/md";
 
 type OverviewCardProps = {
   isLoading: boolean;
@@ -9,12 +11,14 @@ type OverviewCardProps = {
         [title: string]: number;
       };
   cardType?: "highlight" | "default";
+  changeRate: string;
 };
 
 const OverviewCard = ({
   isLoading,
   cardData,
   cardType = "default",
+  changeRate,
 }: OverviewCardProps) => {
   if (isLoading || !cardData) {
     return (
@@ -31,22 +35,49 @@ const OverviewCard = ({
     .split(/(?=[A-Z])/)
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
     .join(" ");
-  const paddingClass = cardType === "highlight" ? "p-0" : "p-3";
 
   return (
     <>
       {cardType === "highlight" ? (
-        <Card space={paddingClass}>
-          <section>
-            <div>{formatTitle}</div>
-            <h3>{score}</h3>
+        <div className="rounded-xl bg-radial-[circle_at_10%_45%] from-yellow-200/40 to-green-800/90 to-5% p-3">
+          <section className="text-white">
+            <div className="mb-2 flex items-center justify-between gap-4">
+              <span className="text-xl">{formatTitle}</span>
+              <span>
+                <IoIosArrowRoundUp
+                  size={35}
+                  className="rotate-45 rounded-full bg-white text-gray-900 transition duration-200 hover:cursor-pointer hover:bg-gray-900 hover:text-white"
+                />
+              </span>
+            </div>
+            <h3 className="mb-2 text-4xl font-bold">{score}</h3>
+            <div className="text-sm text-yellow-200">
+              <span className="mr-2 inline-flex items-center rounded-lg border border-yellow-200 px-1">
+                {changeRate} <MdArrowDropUp />
+              </span>
+              <span className="">Increase from last month</span>
+            </div>
           </section>
-        </Card>
+        </div>
       ) : (
         <Card>
-          <section>
-            <div>{formatTitle}</div>
-            <h3>{score}</h3>
+          <section className="text-gray-800">
+            <div className="mb-2 flex items-center justify-between gap-4">
+              <span className="text-xl">{formatTitle}</span>
+              <span>
+                <IoIosArrowRoundUp
+                  size={35}
+                  className="rotate-45 rounded-full border border-gray-900 bg-white text-gray-800 transition duration-200 hover:cursor-pointer hover:border-white hover:bg-gray-800 hover:text-white"
+                />
+              </span>
+            </div>
+            <h3 className="mb-2 text-4xl font-bold">{score}</h3>
+            <div className="text-sm text-green-800">
+              <span className="mr-2 inline-flex items-center rounded-lg border border-green-800 px-1">
+                {changeRate} <MdArrowDropUp />
+              </span>
+              <span className="">Increase from last month</span>
+            </div>
           </section>
         </Card>
       )}
@@ -73,10 +104,23 @@ const OverviewCards = ({ isLoading, overviewData }: OverviewCardsProps) => {
         isLoading={isLoading}
         cardData={formatEntriesObject(0)}
         cardType="highlight"
+        changeRate={"125"}
       />
-      <OverviewCard isLoading={isLoading} cardData={formatEntriesObject(1)} />
-      <OverviewCard isLoading={isLoading} cardData={formatEntriesObject(2)} />
-      <OverviewCard isLoading={isLoading} cardData={formatEntriesObject(3)} />
+      <OverviewCard
+        isLoading={isLoading}
+        cardData={formatEntriesObject(1)}
+        changeRate={"37"}
+      />
+      <OverviewCard
+        isLoading={isLoading}
+        cardData={formatEntriesObject(2)}
+        changeRate={"1400$"}
+      />
+      <OverviewCard
+        isLoading={isLoading}
+        cardData={formatEntriesObject(3)}
+        changeRate={"25%"}
+      />
     </>
   );
 };
