@@ -61,7 +61,7 @@ const Stopwatch = () => {
 
         <button
           onClick={handleReset}
-          className="rounded-full bg-red-500 px-2 py-2 font-bold transition hover:cursor-pointer hover:bg-red-500"
+          className="= rounded-full bg-red-500 px-2 py-2 font-bold transition hover:cursor-pointer hover:bg-red-400"
         >
           <SquareStop />
         </button>
