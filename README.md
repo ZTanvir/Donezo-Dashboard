@@ -1,7 +1,5 @@
 # Donezo Dashboard
 
-[![Ask DeepWiki](https://devin.ai/assets/askdeepwiki.png)](https://deepwiki.com/ZTanvir/Donezo-Dashboard)
-
 Donezo Dashboard is a modern, responsive web application for project and task management. Built with a robust frontend stack, it provides users with an intuitive interface to visualize key metrics, track progress, and manage workflows effectively.
 
 ## Features
