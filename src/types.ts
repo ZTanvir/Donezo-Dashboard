@@ -3,3 +3,40 @@ export type LoginResponse = {
   email: string;
   token: string;
 };
+
+export type Overview = {
+  totalUsers: number;
+  activeUsers: number;
+  revenue: number;
+  growth: number;
+};
+
+export type User = {
+  id: number;
+  name: string;
+  email: string;
+  status: string;
+  joinDate: string;
+};
+
+export type Analytics = {
+  date: Date;
+  views: number;
+  clicks: number;
+  conversions: number;
+};
+
+export type Products = {
+  id: number;
+  name: string;
+  price: number;
+  sales: number;
+  category: string;
+};
+
+export type Dashboard = {
+  overview: Overview;
+  users: User[];
+  analytics: Analytics[];
+  products: Products[];
+};

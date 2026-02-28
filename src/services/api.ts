@@ -23,3 +23,12 @@ export const login = async (
   if (!response.ok) throw new Error("Login failed, please try again.");
   return response.json();
 };
+
+export const fetchDashboard = async (url: string) => {
+  const res = await fetch(url);
+  if (!res.ok) {
+    const error = new Error("An error occurred while fetching the data.");
+    throw error;
+  }
+  return await res.json();
+};

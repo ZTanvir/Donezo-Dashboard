@@ -1,6 +1,7 @@
 import { CgMathPlus } from "react-icons/cg";
 
 const Dashboard = () => {
+  const { data } = useSwr("");
   return (
     <div className="p-4">
       <div className="flex flex-col items-start justify-between gap-4 md:flex-row">
@@ -19,6 +20,18 @@ const Dashboard = () => {
             Import Data
           </button>
         </div>
+      </div>
+      <div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
       </div>
     </div>
   );
