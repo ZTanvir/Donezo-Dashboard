@@ -1,10 +1,10 @@
 import { CgMathPlus } from "react-icons/cg";
 import { FiVideo } from "react-icons/fi";
-
 import { fetchDashboard } from "../../services/api";
 import useSWR from "swr";
 import OverviewCards from "./OverviewCard";
 import Card from "./Card";
+import Stopwatch from "./Stopwatch";
 
 const Dashboard = () => {
   const { data, isLoading, error } = useSWR("/api/dashboard", fetchDashboard);
@@ -45,7 +45,7 @@ const Dashboard = () => {
         </Card>
         <div></div>
         <div></div>
-        <div></div>
+        <Stopwatch />
       </div>
     </div>
   );
