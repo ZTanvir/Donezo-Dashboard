@@ -25,7 +25,7 @@ const HalfPieChart = ({ pieChartData }: HalfPieChartProps) => {
             paddingAngle={2}
             dataKey="value"
           >
-            {pieChartData.map((entry, index) => (
+            {pieChartData.map((index) => (
               <Cell key={`cell-${index}`} fill={COLORS[index]} />
             ))}
           </Pie>
