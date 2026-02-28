@@ -39,7 +39,7 @@ const ProtectedUserRoute = () => {
   }
   return (
     <div>
-      <div className="grid h-screen grid-cols-[auto_1fr] grid-rows-[auto_1fr] gap-x-3 gap-y-2">
+      <div className="grid min-h-screen grid-cols-[auto_1fr] grid-rows-[auto_1fr] gap-x-3 gap-y-2">
         <div className="col-start-1 row-span-full">
           <Sidebar />
         </div>

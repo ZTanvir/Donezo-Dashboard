@@ -39,7 +39,7 @@ const OverviewCard = ({
   return (
     <>
       {cardType === "highlight" ? (
-        <div className="rounded-xl bg-radial-[circle_at_10%_45%] from-yellow-200/40 to-green-800/90 to-5% p-3">
+        <div className="rounded-xl bg-radial-[circle_at_10%_45%] from-yellow-200/40 to-green-800 to-5% p-3">
           <section className="text-white">
             <div className="mb-2 flex items-center justify-between gap-4">
               <span className="text-xl">{formatTitle}</span>
