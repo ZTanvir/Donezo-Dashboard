@@ -8,7 +8,7 @@ type ProductsProps = {
   productsData: undefined | Product[];
 };
 
-const Products = ({ isLoading, productsData }: ProductsProps) => {
+const ProductsCard = ({ isLoading, productsData }: ProductsProps) => {
   if (isLoading || !productsData) {
     return (
       <Card>
@@ -42,4 +42,4 @@ const Products = ({ isLoading, productsData }: ProductsProps) => {
     </Card>
   );
 };
-export default Products;
+export default ProductsCard;

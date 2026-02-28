@@ -20,7 +20,7 @@ export type User = {
 };
 
 export type Analytic = {
-  date: Date;
+  date: string;
   views: number;
   clicks: number;
   conversions: number;

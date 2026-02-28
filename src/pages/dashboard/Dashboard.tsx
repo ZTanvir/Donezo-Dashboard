@@ -5,8 +5,9 @@ import useSWR from "swr";
 import OverviewCards from "./OverviewCard";
 import Card from "./Card";
 import Stopwatch from "./Stopwatch";
-import Products from "./Products";
-import Team from "./Team";
+import ProductsCard from "./ProductsCard";
+import TeamCard from "./TeamCard";
+import ProjectsAnalyticsCard from "./ProjectsAnalyticsCard";
 
 const Dashboard = () => {
   const { data, isLoading, error } = useSWR("/api/dashboard", fetchDashboard);
@@ -31,7 +32,10 @@ const Dashboard = () => {
       </div>
       <div>
         <OverviewCards isLoading={isLoading} overviewData={data?.overview} />
-        <div></div>
+        <ProjectsAnalyticsCard
+          isLoading={isLoading}
+          analyticsData={data?.analytics}
+        />
         <Card>
           <section>
             <h3 className="mb-2 text-2xl font-bold">Reminders</h3>
@@ -45,8 +49,8 @@ const Dashboard = () => {
             </button>
           </section>
         </Card>
-        <Products isLoading={isLoading} productsData={data?.products} />
-        <Team isLoading={isLoading} teamsData={data?.users} />
+        <ProductsCard isLoading={isLoading} productsData={data?.products} />
+        <TeamCard isLoading={isLoading} teamsData={data?.users} />
         <div></div>
         <Stopwatch />
       </div>

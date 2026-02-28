@@ -8,7 +8,7 @@ type TeamProps = {
   teamsData: undefined | User[];
 };
 
-const Team = ({ isLoading, teamsData }: TeamProps) => {
+const TeamCard = ({ isLoading, teamsData }: TeamProps) => {
   if (isLoading || !teamsData) {
     return (
       <Card>
@@ -56,4 +56,4 @@ const Team = ({ isLoading, teamsData }: TeamProps) => {
     </Card>
   );
 };
-export default Team;
+export default TeamCard;
